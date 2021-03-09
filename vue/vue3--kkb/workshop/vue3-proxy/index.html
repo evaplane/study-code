@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app"></div>
+	<div id="btn">click</div>
+</body>
+<script src="./eva-proxy.js"></script>
+<script>
+	// 实现reactive简单版源码
+	// 使用
+	const root = document.getElementById("app");
+	const btn = document.getElementById("btn");
+
+
+	let obj = reactive({
+		name: "eva",
+		age: 25
+	})
+
+	let double = computed(() => obj.age * 2);
+	// 传的参数是effect中的fn
+	effect(() => {
+		console.log("数据变了", obj.age);
+		root.innerHTML = `<h1>${obj.name}今年${obj.age}岁了，乘以2是${double.value}岁</h1>`
+	})
+
+	btn.addEventListener("click", () => {
+		obj.age += 1;
+	}, false)
+
+</script>
+
+</html>
