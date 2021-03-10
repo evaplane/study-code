@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- rel一定要修改manifest -->
+	<link rel="manifest" href="./manifest.json">
+	<link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+	<h1>Hello PWA</h1>
+</body>
+<script>
+	// 1.注册service
+	window.addEventListener("load", async () => {
+		if ("serviceWorker" in navigator) {
+			try {
+				const registration = await navigator.serviceWorker.register("./sw.js");
+				console.log("注册成功", registration);
+			} catch (error) {
+				console.log("注册失败");
+			}
+
+		}
+	})
+
+	// 通知
+	if (Notification.permission === "default") {
+		// 如果权限是default，就要提醒用户
+		Notification.permission();
+	}
+	// 没有网给提示
+	if (!navigator.onLine) {
+		new Notification("提示", { body: "当前没有网络，访问的是缓存" });
+	}
+
+	// 如果有网络了，给提示
+	window.addEventListener("online", () => {
+		new Notification("提示", { body: "已连接网络，请刷新访问最新数据" });
+	})
+</script>
+
+</html>

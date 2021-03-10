@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+	<h1>serice worker</h1>
+	<script>
+		// 1.在网页加载完成的时候注册service worker
+		window.addEventListener("load", () => {
+			// 能力检测，兼容老版本浏览器,必须是localhost或者HTTPS
+			if ("serviceWorker" in navigator) {
+				// 注册，返回一个promise对象
+				navigator.serviceWorker.register("/sw.js").then(registration => {
+					console.log(registration);
+				}).catch(err => {
+					console.log(err);
+				})
+			}
+		})
+	</script>
+</body>
+
+</html>
