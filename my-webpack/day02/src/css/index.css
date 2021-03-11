@@ -1,0 +1,5 @@
+body div {
+  display: flex;
+  border: 1px solid orange;
+  height: 20px;
+}
