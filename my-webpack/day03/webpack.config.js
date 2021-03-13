@@ -61,11 +61,12 @@ module.exports = {
 			filename:'index.html',
 			template:'./src/index.html',
 			chunks:['index']
-		},{
+		}),
+		new htmlwebpackplugin({
 			filename:'list.html',
 			template:'./src/list.html',
 			chunks:['list']
-		},),
+		}),
 		new MiNiCssExtractPlugin({
 			// filename:"css/[name].css"
 			filename:"css/[name]-[contenthash:6].css"
