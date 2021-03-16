@@ -42,5 +42,15 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin()
 	],
-	devtool:"eval-cheap-source-map"
+	devtool:"eval-cheap-source-map",
+	devServer:{
+		contentBase:'./dist',
+		open:true,
+		port:8081,
+		proxy:{
+			"/api":{
+				target:"http://localhost:9092"
+			}
+		}
+	}
 }
