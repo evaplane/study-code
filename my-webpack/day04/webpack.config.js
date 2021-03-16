@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiNiCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {VueLoaderPlugin} = require('vue-loader')
+const TxtWebpackPlugin = require('./myPlugins/txt-webpack-plugin')
 const path = require('path')
 module.exports = {
 	entry:{
@@ -28,6 +30,14 @@ module.exports = {
 						publicPath:"../"
 					}
 				}
+			},
+			{
+				test:/\.js$/,
+				use:"babel-loader"
+			},
+			{
+				test:/\.vue$/,
+				use:'vue-loader'
 			}
 		]
 	},
@@ -40,7 +50,11 @@ module.exports = {
 		new MiNiCssExtractPlugin({
 			filename:"css/[name]-[contenthash:6].css"
 		}),
-		new CleanWebpackPlugin()
+		new CleanWebpackPlugin(),
+		new VueLoaderPlugin(),
+		new TxtWebpackPlugin({
+			name:'eva'
+		})
 	],
 	devtool:"eval-cheap-source-map",
 	devServer:{
