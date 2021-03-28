@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kvue2</title>
+</head>
+
+<body>
+	<div id="app">
+		<p>{{counter}}</p>
+	</div>
+</body>
+
+</html>
+<script src="./06-kvue2.js"></script>
+<script>
+	const app = new KVue({
+		el: "#app",
+		data: {
+			counter: 1,
+			num: 1000
+		},
+		render(h) {
+			// 真实dom版本
+			// const p1 = document.createElement('p')
+			// p1.textContent = this.counter
+			// return p1
+
+			// vnode版本
+			return h('div', { id: "app", title: this.counter }, [
+				h('p', { 'class': 'title', }, this.counter + "")
+			])
+		}
+	})
+
+	setInterval(() => {
+		app.counter++
+	}, 1000)
+</script>
