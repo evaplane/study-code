@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app"></div>
+	<script>
+		function getMaxIndex(arr) {
+			let max = 0;
+			for (let i = 0; i < arr.length; i++) {
+				if (arr[i] > arr[max]) {
+					max = i
+				}
+			}
+			return max
+		}
+
+		// 反转数组前K个元素
+		function reverse(arr, k) {
+			if (k < 1) return;
+			let i = 0, j = k;
+			while (i < j) {
+				[arr[i], arr[j]] = [arr[j], arr[i]]
+				i++;
+				j--;
+			}
+		}
+		/**
+		 * @param {number[]} arr
+		 * @return {number[]}
+		 */
+		var pancakeSort = function (arr) {
+			let ans = [], max;
+			while (arr.length > 1) {
+				max = getMaxIndex(arr)
+				max > 0 && (ans.push(max + 1))
+				reverse(arr, max);
+				reverse(arr, arr.length - 1)
+				ans.push(arr.length)
+				arr.pop()
+			}
+			return ans;
+		};
+
+		// 9887565442322
+		const res = pancakeSort([9, 8, 4, 1, 3, 2, 6, 5, 7])
+		console.log(res);
+	</script>
+</body>
+
+</html>
