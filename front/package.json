@@ -10,9 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/proxy": "^2.1.0",
     "core-js": "^3.9.1",
     "element-ui": "^2.15.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "stylus-loader": "^5.0.0",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.1.3",
