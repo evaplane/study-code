@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
+const purifycss = require('purifycss-webpack')
+const glob = require('glob-all')
 module.exports = {
 	entry:{
 		index:"./src/index.js"
@@ -23,7 +25,13 @@ module.exports = {
 		new CleanWebpackPlugin({
 			cleanOnceBeforeBuildPatterns:["*/"]
 		}),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new purifycss({
+			paths:glob.sync([
+				path.resolve(__dirname,"./src/*.html"),
+				path.resolve(__dirname,"./src/*.js")
+			])
+		})
 	],
 	module:{
 		rules:[{
@@ -49,6 +57,10 @@ module.exports = {
 				target:"http://localhost:3000"
 			}
 		}
-	}
+	},
+	optimization:{
+		usedExports:true
+	},
+	mode:"production"
 
 }
