@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/index.less */ \"./src/css/index.less\");\n/* harmony import */ var _images_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/logo.jpg */ \"./src/images/logo.jpg\");\n\n\nconsole.log('hello webpack!!!');\n// console.log('pic',pic);\n// const img = new Image()\n\n// img.src = pic;\n\n// const root = document.getElementById('app')\n// root.append(img)\n\n\n//# sourceURL=webpack://day03/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/index.less */ \"./src/css/index.less\");\n/* harmony import */ var _images_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/logo.jpg */ \"./src/images/logo.jpg\");\n\r\n\r\nconsole.log('hello webpack!!!');\r\n// console.log('pic',pic);\r\n// const img = new Image()\r\n\r\n// img.src = pic;\r\n\r\n// const root = document.getElementById('app')\r\n// root.append(img)\r\n\n\n//# sourceURL=webpack://day03/./src/index.js?");
 
 /***/ })
 

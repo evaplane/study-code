@@ -86,15 +86,28 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/css/index.less":
+/*!****************************!*\
+  !*** ./src/css/index.less ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack:///./src/css/index.less?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// const webpack = require('webpack')\n// const options = require('../webpack.config')\n// const compiler = webpack(options)\n// Object.keys(compiler.hooks).forEach(hookName=>{\n// \tcompiler.hooks[hookName].tap('eva',()=>{\n// \t\tconsole.log(`run ----> ${hookName}`);\n// \t})\n// })\n// compiler.run()\n// import \"./css/index.less\"\n// import \"@babel/polyfill\"\n// import axios from 'axios'\n// axios.get('/api/info').then(res=>{\n// \tconsole.log(res);\n// })\n// const arr = [new Promise(()=>{}),new Promise(()=>{})]\n// import Vue from 'vue/dist/vue.esm.js'\n// import './App.vue'\n// import React from 'react'\n// import ReactDOM from 'react-dom';\n// class App extends React.Component{\n// \trender(){\n// \t\treturn (\n// \t\t\t<div>hello react </div>\n// \t\t)\n// \t}\n// }\n// ReactDOM.render(<App />,document.getElementById('app'))\n// const arr = [new Promise(()=>{})]\n// console.log('hello webpack');\n// new Vue({\n// \tel:\"#app\"\n// })\n\n/**\n * sourceMap:源码与bundle代码之间的映射关系\n * 适合开发环境：\n * \t\teval\n * \t\teval-source-map\n * \t\teval-cheap-source-map\n * \t\teval-module-cheap-source-map\n * 适合生产环境\n * \t\tnone\n * \t\thidden-source-map\n *///# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/MzcwMCJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBjb25zdCB3ZWJwYWNrID0gcmVxdWlyZSgnd2VicGFjaycpXG4vLyBjb25zdCBvcHRpb25zID0gcmVxdWlyZSgnLi4vd2VicGFjay5jb25maWcnKVxuLy8gY29uc3QgY29tcGlsZXIgPSB3ZWJwYWNrKG9wdGlvbnMpXG4vLyBPYmplY3Qua2V5cyhjb21waWxlci5ob29rcykuZm9yRWFjaChob29rTmFtZT0+e1xuLy8gXHRjb21waWxlci5ob29rc1tob29rTmFtZV0udGFwKCdldmEnLCgpPT57XG4vLyBcdFx0Y29uc29sZS5sb2coYHJ1biAtLS0tPiAke2hvb2tOYW1lfWApO1xuLy8gXHR9KVxuLy8gfSlcbi8vIGNvbXBpbGVyLnJ1bigpXG4vLyBpbXBvcnQgXCIuL2Nzcy9pbmRleC5sZXNzXCJcbi8vIGltcG9ydCBcIkBiYWJlbC9wb2x5ZmlsbFwiXG4vLyBpbXBvcnQgYXhpb3MgZnJvbSAnYXhpb3MnXG4vLyBheGlvcy5nZXQoJy9hcGkvaW5mbycpLnRoZW4ocmVzPT57XG4vLyBcdGNvbnNvbGUubG9nKHJlcyk7XG4vLyB9KVxuLy8gY29uc3QgYXJyID0gW25ldyBQcm9taXNlKCgpPT57fSksbmV3IFByb21pc2UoKCk9Pnt9KV1cbi8vIGltcG9ydCBWdWUgZnJvbSAndnVlL2Rpc3QvdnVlLmVzbS5qcydcbi8vIGltcG9ydCAnLi9BcHAudnVlJ1xuLy8gaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuLy8gaW1wb3J0IFJlYWN0RE9NIGZyb20gJ3JlYWN0LWRvbSc7XG4vLyBjbGFzcyBBcHAgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnR7XG4vLyBcdHJlbmRlcigpe1xuLy8gXHRcdHJldHVybiAoXG4vLyBcdFx0XHQ8ZGl2PmhlbGxvIHJlYWN0IDwvZGl2PlxuLy8gXHRcdClcbi8vIFx0fVxuLy8gfVxuLy8gUmVhY3RET00ucmVuZGVyKDxBcHAgLz4sZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpKVxuLy8gY29uc3QgYXJyID0gW25ldyBQcm9taXNlKCgpPT57fSldXG4vLyBjb25zb2xlLmxvZygnaGVsbG8gd2VicGFjaycpO1xuLy8gbmV3IFZ1ZSh7XG4vLyBcdGVsOlwiI2FwcFwiXG4vLyB9KVxuXG4vKipcbiAqIHNvdXJjZU1hcDrmupDnoIHkuI5idW5kbGXku6PnoIHkuYvpl7TnmoTmmKDlsITlhbPns7tcbiAqIOmAguWQiOW8gOWPkeeOr+Wig++8mlxuICogXHRcdGV2YWxcbiAqIFx0XHRldmFsLXNvdXJjZS1tYXBcbiAqIFx0XHRldmFsLWNoZWFwLXNvdXJjZS1tYXBcbiAqIFx0XHRldmFsLW1vZHVsZS1jaGVhcC1zb3VyY2UtbWFwXG4gKiDpgILlkIjnlJ/kuqfnjq/looNcbiAqIFx0XHRub25lXG4gKiBcdFx0aGlkZGVuLXNvdXJjZS1tYXBcbiAqLyJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/index.js\n");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/index.less */ \"./src/css/index.less\");\n\n// import axios from 'axios'\n// axios.get('/api/info').then(res=>{\n// \tconsole.log(res);\n// })\nconsole.log('webpack111');\nconst btn = document.createElement('button')\nbtn.innerHTML = '新增'\nbtn.onclick = function(){\n\tvar div = document.createElement('div')\n\tdiv.innerHTML = 'item'\n\tdocument.body.appendChild(div)\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 
-/***/ })	
+/***/ })
 
 /******/ });
