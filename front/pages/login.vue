@@ -1,48 +1,162 @@
 <template>
-  <div>
-    <el-form class="login-form">
-      <el-form-item props="email">
-        <span>
-          <i class="el-icon-mobile"></i>
-        </span>
-        <el-input placeholder="邮箱"></el-input>
+  <div class="login-container">
+    <el-form
+      class="login-form"
+      :model="form"
+      :rules="rules"
+      label-width="100px"
+      ref="loginForm"
+    >
+      <div class="title-container">
+        <img src="../static/1.jpg" alt="" />
+      </div>
+      <el-form-item prop="email" label="邮箱">
+        <el-input v-model="form.email" placeholder="请输入邮箱"></el-input>
       </el-form-item>
-      <el-form-item props="email">
-        <span>
-          <i class="el-icon-lock"></i>
-        </span>
-        <el-input placeholder="密码"></el-input>
+      <el-form-item prop="captcha" label="验证码" class="captcha-container">
+        <div class="captcha">
+          <img :src="code.captcha" alt="" @click="resetCaptcha" />
+        </div>
+        <el-input v-model="form.captcha" placeholder="请输入验证码"></el-input>
+      </el-form-item>
+      <el-form-item prop="nickname" label="昵称">
+        <el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
+      </el-form-item>
+      <el-form-item prop="password" label="密码">
+        <el-input
+          v-model="form.password"
+          type="password"
+          placeholder="请输入密码"
+        ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input placeholder="验证码"></el-input>
-        <img :src="captchaUrl" alt="" @click="updateCaptcha" />
+        <!-- native取消默认时间 -->
+        <el-button type="primary" @click.native="handlelogin">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import md5 from "md5";
 export default {
-  layout: "login",
   data() {
     return {
-      captchaUrl: "",
+      form: {
+        email: "844169876@qq.com",
+        nickname: "eva",
+        password: "a123456",
+        repasswd: "a123456",
+        captcha: "",
+      },
+      rules: {
+        email: [
+          {
+            required: true,
+            message: "请输入邮箱",
+          },
+          {
+            type: "email",
+            message: "请输入正确的邮箱格式",
+          },
+        ],
+        captcha: [
+          {
+            required: true,
+            message: "请输入验证码",
+          },
+        ],
+        nickname: [
+          {
+            required: true,
+            message: "请输入昵称",
+          },
+        ],
+        password: [
+          {
+            required: true,
+            pattern: /^[\w_-]{6,12}$/,
+            message: "请输入6-12位密码",
+          },
+        ],
+        repasswd: [
+          {
+            required: true,
+            pattern: /^[\w_-]{6,12}$/,
+            message: "请再次输入密码",
+          },
+          {
+            validator: (rule, value, callback) => {
+              if (value !== this.form.password) {
+                callback(new Error("两次密码不一致"));
+              }
+              callback();
+            },
+          },
+        ],
+      },
+      code: {
+        captcha: "/api/captcha?_t" + new Date().getTime(),
+      },
     };
   },
-  mounted() {
-    this.updateCaptcha();
-  },
   methods: {
-    updateCaptcha() {
-      this.captchaUrl = "/api/captcha?_t" + new Date().getTime();
+    resetCaptcha() {
+      this.code.captcha = "/api/captcha?_t" + new Date().getTime();
+    },
+    handlelogin() {
+      this.$refs.loginForm.validate(async (valid) => {
+        if (valid) {
+          console.log("校验成功");
+          // @Todo 发送请求 jwt
+          let obj = {
+            email: this.form.email,
+            password: md5(this.form.password),
+            nickname: this.form.nickname,
+            captcha: this.form.captcha,
+          };
+          let result = await this.$http.post("/user/login", obj);
+          if (result.code === 0) {
+            // 返回token并存储
+
+            this.$message.success("登录成功");
+            setTimeout(() => {
+              this.$router.push("/");
+            }, 500);
+          } else {
+            this.$message.error(result.message);
+          }
+        } else {
+          console.log("校验失败");
+        }
+      });
     },
   },
 };
 </script>
 
 <style scoped>
+.login-container {
+  width: 100%;
+  min-height: 100%;
+}
 .login-form {
-  width: 800px;
-  height: 50px auto;
+  width: 520px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.title-container {
+  text-align: center;
+}
+.title-container img {
+  width: 100px;
+}
+.captcha-container {
+  position: relative;
+  width: 50%;
+}
+.captcha-container .captcha {
+  position: absolute;
+  right: -100px;
 }
 </style>
