@@ -19,6 +19,15 @@
         </div>
         <el-input v-model="form.captcha" placeholder="请输入验证码"></el-input>
       </el-form-item>
+      <!-- 邮箱验证 -->
+      <el-form-item prop="emailcode" label="验证码" class="captcha-container">
+        <div class="captcha">
+          <el-button @click="sendEmailCode" :disabled="send.timerDisabled">{{
+            sendText
+          }}</el-button>
+        </div>
+        <el-input v-model="form.captcha" placeholder="请输入验证码"></el-input>
+      </el-form-item>
       <el-form-item prop="nickname" label="昵称">
         <el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
       </el-form-item>
@@ -42,6 +51,10 @@ import md5 from "md5";
 export default {
   data() {
     return {
+      send: {
+        timer: 0,
+        timerDisabled: false,
+      },
       form: {
         email: "844169876@qq.com",
         nickname: "eva",
@@ -79,6 +92,12 @@ export default {
             message: "请输入6-12位密码",
           },
         ],
+        emailcode: [
+          {
+            required: true,
+            message: "请输入邮箱验证码",
+          },
+        ],
         repasswd: [
           {
             required: true,
@@ -99,6 +118,16 @@ export default {
         captcha: "/api/captcha?_t" + new Date().getTime(),
       },
     };
+  },
+  computed: {
+    sendText() {
+      if (this.send.timer === 0) {
+        this.send.timerDisabled = false;
+        return "发送";
+      }
+      this.send.timerDisabled = true;
+      return `${this.send.timer}后发送`;
+    },
   },
   methods: {
     resetCaptcha() {
@@ -131,32 +160,18 @@ export default {
         }
       });
     },
+    async sendEmailCode() {
+      await this.$http.get("/sendcode?email=" + this.form.email);
+      this.send.timer = 10;
+      this.timer = setInterval(() => {
+        this.send.timer -= 1;
+        if (this.send.timer === 0) {
+          clearInterval(this.timer);
+        }
+      }, 1000);
+    },
   },
 };
 </script>
 
-<style scoped>
-.login-container {
-  width: 100%;
-  min-height: 100%;
-}
-.login-form {
-  width: 520px;
-  padding: 100px 0;
-  margin: 0 auto;
-}
-.title-container {
-  text-align: center;
-}
-.title-container img {
-  width: 100px;
-}
-.captcha-container {
-  position: relative;
-  width: 50%;
-}
-.captcha-container .captcha {
-  position: absolute;
-  right: -100px;
-}
-</style>
+<style scoped></style>

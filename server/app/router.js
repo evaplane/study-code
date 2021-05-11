@@ -17,6 +17,5 @@ module.exports = app => {
     router.post('/login', login)
     router.post('/info', info)
     router.post('/verify', verify)
-
   })
 }
